@@ -1,0 +1,29 @@
+#define blueLed 13   
+#define greenLed 12  
+#define redLed 11
+#define yellowLed 10
+unsigned long previousMillis[4];
+
+void setup() { 
+  pinMode(blueLed, OUTPUT);   
+  pinMode(greenLed, OUTPUT);
+  pinMode(redLed, OUTPUT);   
+  pinMode(yellowLed, OUTPUT);
+}
+void loop() {
+ BlinkLed(blueLed, 1000, 0);   
+ BlinkLed(greenLed, 2000, 1);  
+ BlinkLed(redLed, 500, 2);   
+ BlinkLed(yellowLed, 1500, 3);  
+}
+
+void BlinkLed (int led, int interval, int array){   
+  
+ 
+   if (((long)millis() - previousMillis[array]) >= interval){ 
+   
+    previousMillis[array]= millis(); 
+   
+    digitalWrite(led, !digitalRead(led)); 
+  }
+ }
